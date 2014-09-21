@@ -48,7 +48,8 @@ gulp.task('styles', function() {
       .pipe(less())
       .pipe(minifyCSS())
       .pipe(rename({suffix: '.min'}))
-      .pipe(gulp.dest('./app/stylesheets'));
+      .pipe(gulp.dest('./app/stylesheets'))
+      .pipe(connect.reload());
 });
 
 
@@ -57,6 +58,15 @@ gulp.task('styles', function() {
 // Recarga el navegador cuando hay cambios en el HTML
 gulp.task('html', function() {
   gulp.src('./app/**/*.html')
+      .pipe(connect.reload());
+});
+
+
+/* === GULP SCRIPTS TASK
+==============================================================*/
+// Recarga el navegador cuando hay cambios en los scripts
+gulp.task('scripts', function() {
+  gulp.src(['./app/scripts/**/*.js'])
       .pipe(connect.reload());
 });
 
@@ -97,7 +107,7 @@ gulp.task('watch', function() {
   //gulp.watch(['./app/stylesheets/**/*.styl'], ['css']);
   //gulp.watch(['./app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['./app/stylesheets/**/*.less'], ['styles', 'inject']);
-  gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
+  gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject', 'scripts']);
   gulp.watch(['./bower.json'], ['wiredep']);
 });
 
