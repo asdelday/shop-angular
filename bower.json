@@ -1,0 +1,26 @@
+{
+  "name": "angular_shop",
+  "version": "0.0.1",
+  "homepage": "https://github.com/asdelday/shop-angular",
+  "authors": [
+    "Rodrigo Ortega Cuesta <rodortcue@gmail.com>"
+  ],
+  "description": "Angular Shop",
+  "main": "app/index.html",
+  "keywords": [
+    "Angular",
+    "Shop"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "bootstrap": "~3.2.0"
+  }
+}
