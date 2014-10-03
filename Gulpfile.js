@@ -80,6 +80,7 @@ gulp.task('inject', function() {
   return gulp.src('index.html', {cwd: './app'})
               .pipe(inject(sources, {
                 read: false,
+                relative: true,
                 ignorePath: '/app'
               }))
               .pipe(gulp.dest('./app'));

@@ -10,15 +10,16 @@
 
 
     <!-- bower:css -->
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/stylesheets/main.min.css">
+    <link rel="stylesheet" href="stylesheets/main.min.css">
     <!-- endinject -->
 
   </head>
 
-  <body class="list-group" ng-controller="StoreController as store">
+  <body ng-controller="StoreController as store">
     <!--[if lt IE 8]>
       <p class="browsehappy">
         Estás usando un navegador <strong>desactualizado</strong>.
@@ -32,58 +33,30 @@
       <h1 class="text-center">Flatlander Crafted Gems</h1>
       <h2 class="text-center">– an Angular store –</h2>
     </header>
-    <div class="list-group">
-      <div class="list-group-item" ng-repeat="product in store.products">
-        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
-        <div ng-controller="GalleryController as gallery"  ng-show="product.images.length">
-          <div class="img-wrap">
-            <img ng-src="{{product.images[gallery.current]}}" />
-          </div>
-          <ul class="img-thumbnails clearfix">
-            <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
-              <a href><img ng-click="gallery.setCurrent($index)" ng-src="{{image}}" /></a>
-            </li>
-          </ul>
-        </div>
-        <section ng-controller="TabController as tab">
-          <ul class="nav nav-pills">
-            <li ng-class="{ active:tab.isSet(1) }">
-              <a href="" ng-click="tab.setTab(1)">Description</a>
-            </li>
-            <li ng-class="{ active:tab.isSet(2) }">
-              <a href="" ng-click="tab.setTab(2)">Specs</a>
-            </li>
-            <li ng-class="{ active:tab.isSet(3) }">
-              <a href="" ng-click="tab.setTab(3)">Reviews</a>
-            </li>
-          </ul>
-          <div ng-show="tab.isSet(1)">
-            <h4>Description</h4>
-            <blockquote>{{product.description}}</blockquote>
-          </div>
-          <div ng-show="tab.isSet(2)">
-            <h4>Specs</h4>
-            <blockquote>Shine: {{product.shine}}</blockquote>
-          </div>
 
-          <!--  Review Tab's Content  -->
-          <div ng-show="tab.isSet(3)">
-            <!--  Product Reviews List -->
-            <ul>
-              <h4>Reviews</h4>
-              <li ng-repeat="review in product.reviews">
-                <blockquote>
-                  <strong>{{review.stars}} Stars</strong>
-                  {{review.body}}
-                  <cite class="clearfix">—{{review.author}}</cite>
-                </blockquote>
-              </li>
-            </ul>
-          </div>
+    <div id="main-nav-wrapper">
+      <nav id="main-nav" class="text-center">
+        <ul class="text-center nav nav-pills">
+          <li><a href="#">Hola</a></li>
+          <li><a href="#">Adios</a></li>
+          <li><a href="#">Buscar</a></li>
+          <li><a href="#">Casa</a></li>
+        </ul>
+      </nav>
+    </div>
 
-        </section>
+    <div id="wrapper" class="col-md-8 col-md-offset-2">
+      <div class="list-group-item product" ng-repeat="product in store.products">
+
+        <product></product>
+
       </div>
     </div>
+    <div class="clearfix"></div>
+
+    <footer class="text-center">
+      &copy; 2014 - Rodrigo Ortega Cuesta
+    </footer>
 
     <!-- bower:js -->
     <script src="lib/jquery/dist/jquery.js"></script>
@@ -91,7 +64,11 @@
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- inject:js -->
-    <script src="/scripts/app.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/product-gallery.js"></script>
+    <script src="scripts/product-reviews.js"></script>
+    <script src="scripts/product-tabs.js"></script>
+    <script src="scripts/script.js"></script>
     <!-- endinject -->
 
   </body>
